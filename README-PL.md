@@ -1,4 +1,4 @@
-# Boilerplate aplikacji SSR React, TS, Redux oraz React router
+# Aplikacja pogodowa "isCloudy"
 
 Aplikacja React z renderowaniem po stronie serwera (SSR) zbudowana z Vite, Express i TypeScript + Tailwind / shadcn.
 
@@ -28,8 +28,8 @@ Potrzebujesz npm (dostarczany z Node.js) lub dowolny kompatybilny menedżer paki
 1. **Sklonuj repozytorium** (lub pobierz pliki projektu)
 
    ```bash
-   git clone https://github.com/Cloudyaa/ssr-react-redux-ts-boiler.git
-   cd ssr-react-redux-ts-boiler
+   git clone https://github.com/Cloudyaa/is-cloudy-weather-app.git
+   cd is-cloudy-weather-app
    ```
 
 2. **Zainstaluj zależności**
