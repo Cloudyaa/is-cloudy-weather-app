@@ -43,8 +43,11 @@ Potrzebujesz npm (dostarczany z Node.js) lub dowolny kompatybilny menedżer paki
    ```bash
    npm install --legacy-peer-deps
    ```
+3. **Stwórz plik ze zmiennymi środowiskowymi**
 
-## Rozwój
+   ```bash
+   copy example.env .env
+   ```
 
 ### Uruchom serwer deweloperski
 

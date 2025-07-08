@@ -44,6 +44,12 @@ You'll need npm (comes with Node.js) or any compatible package manager.
    npm install --legacy-peer-deps
    ```
 
+3. **Create env file**
+ 
+   ```bash
+   copy example.env .env
+   ```
+
 ## Development
 
 ### Start the development server
@@ -101,19 +107,19 @@ ssr-react-redux-ts-boiler/
 ### Common Issues
 
 1. **"crypto.hash is not a function" error**
-   - Your Node.js version is too old
-   - Update to Node.js 18.20+ or 20.10+
+    - Your Node.js version is too old
+    - Update to Node.js 18.20+ or 20.10+
 
 2. **"Cannot find module" errors**
-   - Make sure all dependencies are installed: `npm install`
-   - Delete `node_modules` and `package-lock.json`, then reinstall
+    - Make sure all dependencies are installed: `npm install`
+    - Delete `node_modules` and `package-lock.json`, then reinstall
 
 3. **Port 3000 already in use**
-   - Kill the process using port 3000, or modify the port in `server.ts`
+    - Kill the process using port 3000, or modify the port in `server.ts`
 
 4. **TypeScript compilation errors**
-   - Ensure you're using the correct Node.js version
-   - Try: `npm install tsx@latest`
+    - Ensure you're using the correct Node.js version
+    - Try: `npm install tsx@latest`
 
 ### System Requirements
 
