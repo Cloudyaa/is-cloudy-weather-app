@@ -24,11 +24,11 @@ export function getWeatherProperties(code: string): WeatherProperties {
     case '01d':
       return { icon: Sun, color: 'yellow-200' };
     case '01n':
-      return { icon: Moon, color: 'slate-700' };
+      return { icon: Moon, color: 'indigo-700' };
     case '02d':
       return { icon: CloudSun, color: 'blue-200' };
     case '02n':
-      return { icon: CloudMoon, color: 'indigo-700' };
+      return { icon: CloudMoon, color: 'slate-700' };
     case '03d':
     case '03n':
       return { icon: Cloud, color: code === '03d' ? 'gray-200' : 'gray-500' };

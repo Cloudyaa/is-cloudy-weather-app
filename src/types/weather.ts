@@ -5,8 +5,15 @@ export interface WeatherData {
   lon: number;
   main: string;
   description: string;
-  temperature: number;
-  feelsLike: number;
+  temperature: {
+    main: number;
+    min: number;
+    max: number;
+    feelsLike: number;
+  };
+  clouds: number;
+  sunrise: number;
+  sunset: number;
   humidity: number;
   windSpeed: number;
   visibility: number;
