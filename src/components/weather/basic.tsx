@@ -32,17 +32,17 @@ export function BasicDataPanel({
       <CardContent className="grid lg:grid-cols-[60%_40%] lg:justify-center px-0">
         <div className="flex-center divide-x *:px-4">
           <p>
-            <span className="font-black text-8xl lg:text-9xl">
+            <span className="font-black text-7xl lg:text-9xl">
               {weatherData.temperature.main}
             </span>
             <span className="font-semibold text-xl align-top">°C</span>
           </p>
           <WeatherIcon
             iconCode={weatherData.icon}
-            className="size-full max-w-40"
+            className="size-full max-w-30 lg:max-w-40"
           />
         </div>
-        <div className="text-muted-foreground text-sm flex lg:flex-col items-center lg:items-end justify-evenly scale-85 gap-2 sm:gap-4">
+        <div className="text-muted-foreground text-sm flex lg:flex-col items-center lg:items-end justify-evenly -ms-4 scale-85 gap-2 sm:gap-4">
           <PanelDataItem
             icon={ChevronDown}
             label="Najmniej"

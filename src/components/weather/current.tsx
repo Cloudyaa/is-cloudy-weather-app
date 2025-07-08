@@ -35,7 +35,7 @@ export function CurrentWeather(): ReactNode {
 
   return (
     <div className="space-y-2 max-w-2xl">
-      <h1 className="py-4">{currentWeather.city}</h1>
+      <h1 className="py-4 place-self-start lg:col-span-2">{currentWeather?.city}</h1>
       <BasicDataPanel weatherData={currentWeather} />
       <AdditionalDataPanel weatherData={currentWeather} />
     </div>
