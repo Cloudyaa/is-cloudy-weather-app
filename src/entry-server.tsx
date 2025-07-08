@@ -1,6 +1,6 @@
 import { renderToString } from 'react-dom/server';
 import { Provider } from 'react-redux';
-import { store } from './store';
+import { createStore } from './store';
 import { RouterProvider } from 'react-router-dom';
 import { createSSRRouter } from './router';
 
@@ -8,6 +8,9 @@ import { createSSRRouter } from './router';
 export function render(url: string) {
   // Create router with the requested URL
   const router = createSSRRouter(url);
+
+  // Create store
+  const store = createStore();
 
   const html = renderToString(
     <Provider store={store}>

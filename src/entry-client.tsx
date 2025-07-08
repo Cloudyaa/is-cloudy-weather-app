@@ -1,8 +1,8 @@
 import { hydrateRoot } from 'react-dom/client';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
 import { createRouter } from './router';
 import { RouterProvider } from 'react-router-dom';
+import { createStore } from '@/store';
 
 /** Get preloaded state from server */
 const preloadedState = window.__PRELOADED_STATE__;
@@ -10,11 +10,8 @@ const preloadedState = window.__PRELOADED_STATE__;
 /** Create router */
 const router = createRouter();
 
-/** Create store with preloaded state */
-const store = configureStore({
-  reducer: {},
-  preloadedState,
-});
+/** Create createStore with preloaded state */
+const store = createStore(preloadedState);
 
 /** Allow the passed state to be garbage-collected */
 delete window.__PRELOADED_STATE__;
