@@ -2,6 +2,7 @@ import { createBrowserRouter, createMemoryRouter } from 'react-router-dom';
 import { RootLayout } from '@/components/layout/root';
 import { NotFoundPage } from '@/pages/not-found';
 import { HomePage } from '@/pages/home';
+import { CityPage } from '@/pages/city';
 
 export const routes = [
   {
@@ -13,10 +14,10 @@ export const routes = [
         index: true,
         element: <HomePage />,
       },
-      // {
-      //   path: ':city',
-      //   element: <CityPage />,
-      // },
+      {
+        path: ':city',
+        element: <CityPage />,
+      },
     ],
   },
 ];
