@@ -30,7 +30,7 @@ export const fetchForecastWeather = createAsyncThunk(
         min: day.temp.min,
         max: day.temp.max,
       },
-      iconUrl: `https://openweathermap.org/img/wn/${day.weather.icon}.png`,
+      icon: day.weather.icon,
     })) as ForecastData[];
   },
 );

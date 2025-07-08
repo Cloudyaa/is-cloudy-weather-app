@@ -11,7 +11,7 @@ export interface WeatherData {
   windSpeed: number;
   visibility: number;
   pressure: number;
-  iconUrl: string;
+  icon: string;
 }
 
 export interface ForecastData {
@@ -23,5 +23,5 @@ export interface ForecastData {
   };
   main: string;
   description: string;
-  iconUrl: string;
+  icon: string;
 }

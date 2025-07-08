@@ -22,15 +22,15 @@ export const fetchCurrentWeather = createAsyncThunk(
       country: data.sys.country,
       lat: data.coord.lat,
       lon: data.coord.lon,
-      main: data.weather.main,
-      description: data.weather.description,
+      main: data.weather[0].main,
+      description: data.weather[0].description,
       temperature: data.main.temp,
       feelsLike: data.main.feelsLike,
       humidity: data.main.humidity,
       windSpeed: data.wind.speed,
       visibility: data.visibility,
       pressure: data.main.pressure,
-      iconUrl: `https://openweathermap.org/img/wn/${data.main.icon}.png`,
+      icon: data.weather[0].icon,
     } as WeatherData;
   },
 );
