@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 import type { WeatherData } from '@/types/weather';
 import { CircleGauge, Droplets, Thermometer, Wind } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
-import { PanelDataItem } from './data-item';
+import { PanelDataItem } from '../data-item';
 
 interface AdditionalDataPanelProps {
   weatherData: WeatherData;

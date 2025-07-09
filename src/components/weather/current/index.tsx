@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom';
 import { fetchCurrentWeather } from '@/store/weather';
 import { FullScreenLoader } from '@/components/ui/loader';
 import { NotFoundPage } from '@/pages/not-found';
-import { AdditionalDataPanel } from '@/components/weather/addtional';
-import { BasicDataPanel } from '@/components/weather/basic';
+import { AdditionalDataPanel } from '@/components/weather/current/addtional';
+import { BasicDataPanel } from '@/components/weather/current/basic';
 import { cn } from '@/lib/utils';
 import { getWeatherProperties } from '@/lib/weather-props';
 
