@@ -151,6 +151,15 @@
     @apply text-lg;
   }
 
+  /*autofill background color*/
+  input:-webkit-autofill,
+  textarea:-webkit-autofill,
+  select:-webkit-autofill {
+    -webkit-box-shadow: 0 0 0 1000px var(--background) inset !important;
+    box-shadow: 0 0 0 1000px var(--background) inset !important;
+    -webkit-text-fill-color: var(--foreground) !important;
+  }
+
   .flex-center {
     @apply flex items-center justify-center;
   }
