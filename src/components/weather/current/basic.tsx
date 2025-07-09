@@ -8,9 +8,9 @@ import {
   CardTitle,
 } from '@/components/ui/card';
 import { getDateTimeLocalized, getTime } from '@/lib/utils';
-import { WeatherIcon } from '@/components/weather/icon';
 import { PanelDataItem } from '@/components/weather/data-item';
 import { ChevronDown, ChevronUp, Sunrise, Sunset } from 'lucide-react';
+import { TemperatureDisplay } from '@/components/weather/temperature-display';
 
 interface BasicDataPanelProps {
   weatherData: WeatherData;
@@ -30,18 +30,15 @@ export function BasicDataPanel({
         </CardTitle>
       </CardHeader>
       <CardContent className="grid lg:grid-cols-[60%_40%] lg:justify-center px-0">
-        <div className="flex-center divide-x *:px-4">
-          <p>
-            <span className="font-black text-7xl lg:text-9xl">
-              {weatherData.temperature.main}
-            </span>
-            <span className="font-semibold text-xl align-top">°C</span>
-          </p>
-          <WeatherIcon
-            iconCode={weatherData.icon}
-            className="size-full max-w-30 lg:max-w-40"
-          />
-        </div>
+        <TemperatureDisplay
+          temperature={weatherData.temperature.main}
+          iconCode={weatherData.icon}
+          classNames={{
+            container: 'justify-center',
+            temperature: 'font-black text-7xl lg:text-9xl',
+            icon: 'max-w-30 lg:max-w-40',
+          }}
+        />
         <div className="text-muted-foreground text-sm grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 items-center justify-evenly -ms-4 scale-85 gap-2 lg:gap-4 *:justify-center lg:*:justify-end">
           <PanelDataItem
             icon={ChevronDown}
