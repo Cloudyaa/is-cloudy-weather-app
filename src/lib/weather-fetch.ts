@@ -4,7 +4,7 @@ const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
 export async function fetchWeatherData(searchValue: string){
   const res = await fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${encodeURIComponent(searchValue)}&units=metric&appid=${API_KEY}&lang=pl`,
+    `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${API_KEY}&lang=pl`,
   );
   if (!res.ok) {
     throw new Error(`Failed to fetch weather data for ${searchValue}`);

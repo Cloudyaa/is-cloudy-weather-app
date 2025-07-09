@@ -16,12 +16,12 @@ export function CurrentWeather(): ReactNode {
 
   const { currentWeather, isLoading, error } = useAppSelector(weatherState);
 
-  // fetch weather data
+  // fetch weather data if it is not already loaded
   useEffect(() => {
-    if (city) {
+    if (city && !currentWeather) {
       dispatch(fetchCurrentWeather(city));
     }
-  }, [city, dispatch]);
+  }, [city, currentWeather, dispatch]);
 
   // apply background class based on weather
   useEffect(() => {

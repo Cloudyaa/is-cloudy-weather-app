@@ -1,7 +1,7 @@
 import { type ReactNode } from 'react';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { Input } from '@/components/ui/input';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SearchIcon } from 'lucide-react';
 import { FormProvider, useForm } from 'react-hook-form';
@@ -15,15 +15,16 @@ import {
 } from '../ui/form';
 import z from 'zod';
 import { useAppDispatch } from '@/hooks/redux';
-import { resetWeather } from '@/store/weather';
+import { fetchCurrentWeather, resetWeather } from '@/store/weather';
 
 export default function SearchBar(): ReactNode {
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+  const { city } = useParams<{ city: string }>();
 
   const form = useForm({
     defaultValues: {
-      searchValue: '',
+      searchValue: city ?? "",
     },
     resolver: zodResolver(
       z.object({
@@ -33,9 +34,11 @@ export default function SearchBar(): ReactNode {
   });
 
   const onSubmit = form.handleSubmit((data) => {
+    const encodedSearch = encodeURIComponent(data.searchValue.trim());
     // clear previous weather data
     dispatch(resetWeather());
-    const encodedSearch = encodeURIComponent(data.searchValue.trim());
+    // fetch new weather data
+    dispatch(fetchCurrentWeather(encodedSearch));
     // navigate to the search page with encoded search value
     navigate(`/${encodedSearch}`);
   });
