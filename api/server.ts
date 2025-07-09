@@ -27,7 +27,7 @@ export async function createServer() {
   // middlewares). The following is valid even after restarts.
   app.use(vite.middlewares);
 
-  app.use('*', async (req, res, next) => {
+  app.use('*all', async (req, res, next) => {
     const url = req.originalUrl;
 
     try {
