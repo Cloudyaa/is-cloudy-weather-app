@@ -6,6 +6,8 @@ import { FullScreenLoader } from '@/components/ui/loader';
 import { NotFoundPage } from '@/pages/not-found';
 import { AdditionalDataPanel } from '@/components/weather/addtional';
 import { BasicDataPanel } from '@/components/weather/basic';
+import { cn } from '@/lib/utils';
+import { getWeatherProperties } from '@/lib/weather-props';
 
 export function CurrentWeather(): ReactNode {
   const dispatch = useAppDispatch();
@@ -15,18 +17,35 @@ export function CurrentWeather(): ReactNode {
     (state) => state.weather,
   );
 
+  // fetch weather data
   useEffect(() => {
     if (city) {
       dispatch(fetchCurrentWeather(city));
     }
   }, [city, dispatch]);
 
+  // apply background class based on weather
+  useEffect(() => {
+    const bgClass = cn(
+      'bg-linear-to-t',
+      `${getWeatherProperties(currentWeather?.icon ?? '01d').bgColorFrom} from-30%`,
+      'to-background'
+    );
+
+    document.body.className = '';
+    document.body.classList.add(...bgClass.split(' '));
+
+    return () => {
+      document.body.className = '';
+    };
+  }, [currentWeather]);
+
   if (isLoading) {
     return <FullScreenLoader />;
   }
 
   if (error) {
-    return <NotFoundPage />;
+    return <NotFoundPage className="col-span-2" />;
   }
 
   if (!currentWeather) {
@@ -35,7 +54,7 @@ export function CurrentWeather(): ReactNode {
 
   return (
     <div className="space-y-2 max-w-2xl">
-      <h1 className="py-4 place-self-start lg:col-span-2">{currentWeather?.city}</h1>
+      <h1 className="py-4 place-self-start lg:col-span-2">{currentWeather.city}, {currentWeather.country}</h1>
       <BasicDataPanel weatherData={currentWeather} />
       <AdditionalDataPanel weatherData={currentWeather} />
     </div>

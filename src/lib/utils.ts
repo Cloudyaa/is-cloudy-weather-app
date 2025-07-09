@@ -17,4 +17,4 @@ export const getTime = (time: number | null) =>
   time ? format(time * 1000, "HH:mm", { locale: pl }) : null;
 
 export const getWeekDayName = (date: number | null) =>
-  date ? format(date * 1000, "EEEE", { locale: pl }) : null;
+  date ? format(date * 1000, "E", { locale: pl }) : null;

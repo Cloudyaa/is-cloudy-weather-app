@@ -42,7 +42,7 @@ export function BasicDataPanel({
             className="size-full max-w-30 lg:max-w-40"
           />
         </div>
-        <div className="text-muted-foreground text-sm flex lg:flex-col items-center lg:items-end justify-evenly -ms-4 scale-85 gap-2 sm:gap-4">
+        <div className="text-muted-foreground text-sm grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-1 items-center justify-evenly -ms-4 scale-85 gap-2 lg:gap-4 *:justify-center lg:*:justify-end">
           <PanelDataItem
             icon={ChevronDown}
             label="Najmniej"

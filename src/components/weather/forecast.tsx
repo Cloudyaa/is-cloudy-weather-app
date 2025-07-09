@@ -1,39 +1,40 @@
 import { type ReactNode, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
-import { FullScreenLoader } from '@/components/ui/loader';
-import { NotFoundPage } from '@/pages/not-found';
+import { CenteredLoader } from '@/components/ui/loader';
 import { fetchForecastWeather } from '@/store/forecast';
 import type { ForecastData } from '@/types/weather';
 import { Card, CardContent } from '@/components/ui/card';
 import { getWeekDayName } from '@/lib/utils';
 import { WeatherIcon } from '@/components/weather/icon';
 import { useSelector } from 'react-redux';
-import { selectCurrentTemp } from '@/store/weather/weather.selector';
+import {
+  selectCoordinates,
+  selectCurrentTemp,
+  selectIsWeatherError,
+} from '@/store/weather/weather.selector';
 
-interface ForecastWeatherProps {
-  lat?: number;
-  lon?: number;
-}
-
-export function ForecastWeather({ lat, lon }: ForecastWeatherProps): ReactNode {
+export function ForecastWeather(): ReactNode {
   const dispatch = useAppDispatch();
+  const coordinates = useSelector(selectCoordinates);
+  const isWeatherError = useSelector(selectIsWeatherError);
 
-  const { forecast, isLoading, error } = useAppSelector(
+  const { forecast, isLoading } = useAppSelector(
     (state) => state.forecast,
   );
 
+  // fetch forecast weather data
   useEffect(() => {
-    if (lat && lon) {
-      dispatch(fetchForecastWeather({ lat, lon }));
+    if (coordinates) {
+      dispatch(fetchForecastWeather(coordinates));
     }
-  }, [lat, lon, dispatch]);
+  }, [coordinates, dispatch]);
 
-  if (isLoading) {
-    return <FullScreenLoader />;
+  if (isWeatherError) {
+    return null;
   }
 
-  if (error) {
-    return <NotFoundPage />;
+  if (isLoading) {
+    return <CenteredLoader />;
   }
 
   if (!forecast) {

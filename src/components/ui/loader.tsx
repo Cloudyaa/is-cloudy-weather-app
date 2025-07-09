@@ -51,7 +51,7 @@ function FullScreenLoader({
 }: ComponentProps<typeof CenteredLoader>): ReactNode {
   return (
     <CenteredLoader
-      containerClassName={cn('h-[calc(100dvh-40px)] backdrop-blur-xs', containerClassName)}
+      containerClassName={cn('h-[calc(100dvh-200px)] backdrop-blur-xs', containerClassName)}
       className={cn('size-8', className)}
       withDescription={withDescription}
       {...props}
