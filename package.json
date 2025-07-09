@@ -5,6 +5,7 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
+    "start": "npm i && npm run dev:local",
     "dev": "tsx api/server.ts",
     "dev:local": "tsx dev.ts",
     "build": "vite build",
