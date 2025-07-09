@@ -1,6 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
+import type { VercelRequest, VercelResponse } from '@vercel/node';
 
 export async function createServer() {
   const app = express();
@@ -64,4 +65,8 @@ export async function createServer() {
   return app;
 }
 
-createServer();
+// Export for Vercel
+export default async function handler(req: VercelRequest, res: VercelResponse) {
+  const app = await createServer();
+  return app(req, res);
+}

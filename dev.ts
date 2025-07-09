@@ -1,4 +1,4 @@
-import { createServer } from './server';
+import { createServer } from './api/server';
 
 // start the server for local testing
 createServer().then((app) => {
