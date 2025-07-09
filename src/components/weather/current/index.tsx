@@ -8,14 +8,13 @@ import { AdditionalDataPanel } from '@/components/weather/current/addtional';
 import { BasicDataPanel } from '@/components/weather/current/basic';
 import { cn } from '@/lib/utils';
 import { getWeatherProperties } from '@/lib/weather-props';
+import { weatherState } from '@/store/weather/weather.selector';
 
 export function CurrentWeather(): ReactNode {
   const dispatch = useAppDispatch();
   const { city } = useParams<{ city: string }>();
 
-  const { currentWeather, isLoading, error } = useAppSelector(
-    (state) => state.weather,
-  );
+  const { currentWeather, isLoading, error } = useAppSelector(weatherState);
 
   // fetch weather data
   useEffect(() => {
