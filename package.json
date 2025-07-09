@@ -3,7 +3,6 @@
   "author": "Cloudyaa - Klaudia Gadzinska",
   "private": true,
   "version": "0.0.1",
-  "type": "module",
   "scripts": {
     "dev": "tsx api/server.ts",
     "dev:local": "tsx dev.ts",
