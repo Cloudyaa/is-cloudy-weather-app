@@ -9,18 +9,16 @@ import { WeatherIcon } from '@/components/weather/icon';
 import { useSelector } from 'react-redux';
 import {
   selectCoordinates,
-  selectCurrentTemp,
   selectIsWeatherError,
 } from '@/store/weather/weather.selector';
+import { TemperatureDifference } from '@/components/weather/comparison/temperature-difference';
 
 export function ForecastWeather(): ReactNode {
   const dispatch = useAppDispatch();
   const coordinates = useSelector(selectCoordinates);
   const isWeatherError = useSelector(selectIsWeatherError);
 
-  const { forecast, isLoading } = useAppSelector(
-    (state) => state.forecast,
-  );
+  const { forecast, isLoading } = useAppSelector((state) => state.forecast);
 
   // fetch forecast weather data
   useEffect(() => {
@@ -55,22 +53,13 @@ interface ForecastDayItemProps {
 }
 
 function ForecastDayItem({ forecast }: ForecastDayItemProps) {
-  const currentTemp = useSelector(selectCurrentTemp);
-
-  const tempDifference = forecast.temperature.day - currentTemp;
-
   return (
     <Card className="bg-card/50 backdrop-blur w-full p-2 text-center gap-0 justify-center">
       <CardContent className="px-0 space-y-1">
         <p className="uppercase">{getWeekDayName(forecast.timestamp)}</p>
         <WeatherIcon iconCode={forecast.icon} />
         <p className="font-semibold">{forecast.temperature.day}°C</p>
-        {tempDifference !== 0 ? (
-          <p className="text-xs text-muted-foreground">
-            <span>{tempDifference > 0 ? 'Cieplej' : 'Zimniej'}</span>
-            <span> o {Math.abs(tempDifference)}°C</span>
-          </p>
-        ) : null}
+        <TemperatureDifference compareValue={forecast.temperature.day} />
       </CardContent>
     </Card>
   );
