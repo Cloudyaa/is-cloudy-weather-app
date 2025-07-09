@@ -25,7 +25,7 @@ export interface ForecastData {
   timestamp: number;
   temperature: {
     day: number;
-    min: number
+    min: number;
     max: number;
   };
   main: string;

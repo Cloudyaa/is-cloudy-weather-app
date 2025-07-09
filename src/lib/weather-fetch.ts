@@ -2,7 +2,7 @@ import type { WeatherData } from '@/types/weather';
 
 const API_KEY = import.meta.env.VITE_OPENWEATHER_API_KEY;
 
-export async function fetchWeatherData(searchValue: string){
+export async function fetchWeatherData(searchValue: string) {
   const res = await fetch(
     `https://api.openweathermap.org/data/2.5/weather?q=${searchValue}&units=metric&appid=${API_KEY}&lang=pl`,
   );

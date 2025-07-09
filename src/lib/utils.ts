@@ -11,10 +11,10 @@ export const getDateLocalized = (date: string | null) =>
   date ? format(date, 'PPP', { locale: pl }) : null;
 
 export const getDateTimeLocalized = (date: string | null) =>
-  date ? format(date, "PPp", { locale: pl }) : null;
+  date ? format(date, 'PPp', { locale: pl }) : null;
 
 export const getTime = (time: number | null) =>
-  time ? format(time * 1000, "HH:mm", { locale: pl }) : null;
+  time ? format(time * 1000, 'HH:mm', { locale: pl }) : null;
 
 export const getWeekDayName = (date: number | null) =>
-  date ? format(date * 1000, "E", { locale: pl }) : null;
+  date ? format(date * 1000, 'E', { locale: pl }) : null;

@@ -40,7 +40,7 @@ const comparisonSlice = createSlice({
         const city = action.meta.arg;
         state.isLoading[city] = false;
         state.error[city] = action.error.message ?? 'Failed to fetch data';
-      })
+      });
   },
 });
 

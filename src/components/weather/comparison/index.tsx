@@ -1,11 +1,20 @@
 import { type ReactNode, useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '@/hooks/redux';
 import { CenteredLoader } from '@/components/ui/loader';
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from '@/components/ui/card';
 import { selectComparisonWeather } from '@/store/comparison/comparison.selector';
 import { fetchComparisonWeather } from '@/store/comparison/comparison.fetch';
 import { useSelector } from 'react-redux';
-import { selectIsWeatherError, weatherState } from '@/store/weather/weather.selector';
+import {
+  selectIsWeatherError,
+  weatherState,
+} from '@/store/weather/weather.selector';
 import { TemperatureDifference } from '@/components/weather/comparison/temperature-difference';
 import { HumidityDifference } from '@/components/weather/comparison/humidity-difference';
 import { TemperatureDisplay } from '@/components/weather/temperature-display';
@@ -17,19 +26,17 @@ export function WeatherComparison(): ReactNode {
   const { currentWeather } = useAppSelector(weatherState);
 
   // filter out the current city from the comparison cities
-  const filteredCities = COMPARISON_CITIES
-    .filter(
-      (city) => city.toLowerCase() !== currentWeather?.city.toLowerCase()
-    )
-    .slice(0, 4);
+  const filteredCities = COMPARISON_CITIES.filter(
+    (city) => city.toLowerCase() !== currentWeather?.city.toLowerCase(),
+  ).slice(0, 4);
 
   return !isWeatherError ? (
     <div className="w-full lg:col-span-2 space-y-2">
       <h5>Inne miasta w Polsce</h5>
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-2">
-        {filteredCities.map((city) => (
-          <ComparisonItem key={city} city={city} />
-        )).slice(0, 4)}
+        {filteredCities
+          .map((city) => <ComparisonItem key={city} city={city} />)
+          .slice(0, 4)}
       </div>
     </div>
   ) : null;
@@ -64,7 +71,8 @@ function ComparisonItem({ city }: ComparisonItemProps): ReactNode {
     <Card className="bg-card/50 backdrop-blur w-full py-4 gap-2">
       <CardHeader className="px-4 ">
         <CardTitle>{comparisonCityData.city}</CardTitle>
-        <CardDescription className="capitalize font-semibold text-xs">{comparisonCityData.description}
+        <CardDescription className="capitalize font-semibold text-xs">
+          {comparisonCityData.description}
         </CardDescription>
       </CardHeader>
       <CardContent className="px-4 space-y-2">
@@ -72,11 +80,13 @@ function ComparisonItem({ city }: ComparisonItemProps): ReactNode {
           temperature={comparisonCityData.temperature.main}
           iconCode={comparisonCityData.icon}
           classNames={{
-            icon: "max-w-16"
+            icon: 'max-w-16',
           }}
         />
-        <TemperatureDifference compareValue={comparisonCityData.temperature.main} />
-        <HumidityDifference compareValue={comparisonCityData.humidity}/>
+        <TemperatureDifference
+          compareValue={comparisonCityData.temperature.main}
+        />
+        <HumidityDifference compareValue={comparisonCityData.humidity} />
       </CardContent>
     </Card>
   );

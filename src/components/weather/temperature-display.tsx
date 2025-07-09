@@ -21,7 +21,12 @@ export function TemperatureDisplay({
   return (
     <div className={cn('flex items-center divide-x', classNames?.container)}>
       <p className="px-2 lg:px-4">
-        <span className={cn('font-black text-3xl lg:text-5xl', classNames?.temperature)}>
+        <span
+          className={cn(
+            'font-black text-3xl lg:text-5xl',
+            classNames?.temperature,
+          )}
+        >
           {temperature}
         </span>
         <span

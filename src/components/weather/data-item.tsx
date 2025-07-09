@@ -10,7 +10,13 @@ interface InfoPanelItemProps {
   className?: string;
 }
 
-export function PanelDataItem({ icon, label, value, append, className,  }: InfoPanelItemProps) {
+export function PanelDataItem({
+  icon,
+  label,
+  value,
+  append,
+  className,
+}: InfoPanelItemProps) {
   return (
     <div className={cn('flex items-center gap-1', className)}>
       <Icon icon={icon} className="size-6" strokeWidth={2.5} />

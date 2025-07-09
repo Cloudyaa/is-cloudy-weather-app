@@ -28,7 +28,7 @@ export function CurrentWeather(): ReactNode {
     const bgClass = cn(
       'bg-linear-to-t',
       `${getWeatherProperties(currentWeather?.icon ?? '01d').bgColorFrom} from-30%`,
-      'to-background'
+      'to-background',
     );
 
     document.body.className = '';
@@ -53,7 +53,9 @@ export function CurrentWeather(): ReactNode {
 
   return (
     <div className="space-y-2 max-w-2xl">
-      <h1 className="py-4 place-self-start lg:col-span-2">{currentWeather.city}, {currentWeather.country}</h1>
+      <h1 className="py-4 place-self-start lg:col-span-2">
+        {currentWeather.city}, {currentWeather.country}
+      </h1>
       <BasicDataPanel weatherData={currentWeather} />
       <AdditionalDataPanel weatherData={currentWeather} />
     </div>

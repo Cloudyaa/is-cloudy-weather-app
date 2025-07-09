@@ -24,7 +24,7 @@ export default function SearchBar(): ReactNode {
 
   const form = useForm({
     defaultValues: {
-      searchValue: city ?? "",
+      searchValue: city ?? '',
     },
     resolver: zodResolver(
       z.object({
