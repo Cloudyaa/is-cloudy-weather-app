@@ -21,8 +21,10 @@ const weatherSlice = createSlice({
   name: 'weather',
   initialState,
   reducers: {
-    setWeather(state, action) {
-      state.currentWeather = action.payload;
+    resetWeather(state) {
+      state.currentWeather = null;
+      state.isLoading = false;
+      state.error = null;
     },
   },
   extraReducers: (builder) => {
@@ -45,4 +47,5 @@ const weatherSlice = createSlice({
   },
 });
 
+export const { resetWeather } = weatherSlice.actions;
 export default weatherSlice.reducer;
