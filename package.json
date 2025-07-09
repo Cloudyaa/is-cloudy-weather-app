@@ -6,6 +6,7 @@
   "type": "module",
   "scripts": {
     "dev": "tsx server.ts",
+    "dev:local": "tsx dev.ts",
     "build": "vite build",
     "lint": "eslint --fix --max-warnings=0 .",
     "preview": "vite preview",

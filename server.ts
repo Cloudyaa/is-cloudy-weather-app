@@ -2,7 +2,7 @@ import { readFile } from 'node:fs/promises';
 import express from 'express';
 import { createServer as createViteServer } from 'vite';
 
-async function createServer() {
+export async function createServer() {
   const app = express();
 
   // Create Vite server in middleware mode and configure the app type as
@@ -61,7 +61,7 @@ async function createServer() {
     }
   });
 
-  app.listen(3000);
+  return app;
 }
 
 createServer();
