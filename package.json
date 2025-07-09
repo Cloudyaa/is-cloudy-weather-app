@@ -54,6 +54,14 @@
     "typescript-eslint": "^8.34.1",
     "vite": "^7.0.0"
   },
+  "optionalDependencies": {
+    "@rollup/rollup-linux-x64-gnu": "4.44.2"
+  },
+  "overrides": {
+    "vite": {
+      "rollup": "npm:@rollup/wasm-node"
+    }
+  },
   "engines": {
     "node": ">=18.20.0 || >=20.10.0",
     "npm": ">=8.0.0"
